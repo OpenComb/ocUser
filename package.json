@@ -1,0 +1,12 @@
+{
+  "name": "ocuser",
+  "version": "0.1.0",
+  "description": "OpenComb 的用户扩展",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "aleechou",
+  "license": "BSD"
+}
