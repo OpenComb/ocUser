@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+	"dependencies": {
+		"ocframework":"0.9.1"
+	},
   "repository": "",
   "author": "aleechou",
   "license": "BSD"
