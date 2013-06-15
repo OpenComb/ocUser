@@ -60,6 +60,8 @@ exports.onload = function(app){
 		    helper.log.trace("before template weave") ;
 	        tpl.$(".header-right").prepend('<div class="header-userpad" style="float:right"><view name="userpad" /></div>') ;
 
+		    console.log(tpl.$(".header-userpad").html()) ;
+
 		    // 重新编译模板
 		    tpl.compile() ;
 	    })) ;
