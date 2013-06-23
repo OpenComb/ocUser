@@ -1,6 +1,6 @@
 <include file="ocframework/templates/paginator.html" model="@page" model.url="/ocuser/lib/UserList:page?page=%pagenum%" />
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover usrlst">
 
     <thaed>
         <tr>
@@ -12,6 +12,7 @@
         </tr>
     </thaed>
 
+    <tbody>
     <foreach for="@page.docs" var="doc">
         <tr>
             <td>
@@ -26,7 +27,7 @@
             <td>
                 {@doc.createTime}
             </td>
-            <td>
+            <td class="useroptd">
                 <a class="show-user-detail" href="javascript:void(0)" _id="@doc._id.toString()">详细</a>
                 
                 <div class="user-detail" style="display:none" _id="@doc._id.toString()">
@@ -41,7 +42,7 @@
             </td>
         </tr>
     </foreach>
-
+    </tbody>
 
 </table>
 
