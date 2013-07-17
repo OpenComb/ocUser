@@ -1,13 +1,13 @@
 {
   "name": "ocuser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "OpenComb 的用户扩展",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 	"dependencies": {
-		"ocframework":"0.9.1"
+		"ocframework":"0.9.2"
 	},
   "repository": "",
   "author": "aleechou",
