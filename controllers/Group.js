@@ -121,5 +121,3 @@ module.exports = {
 	}
 	
 }
-
-module.exports.__as_controller = true ;

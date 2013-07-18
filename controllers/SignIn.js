@@ -1,4 +1,4 @@
-var util = require("./util.js") ;
+var util = require("./../lib/util.js") ;
 
 module.exports = {
 
@@ -56,6 +56,3 @@ module.exports = {
 		}
 	}
 }
-
-
-module.exports.__as_controller = true ;

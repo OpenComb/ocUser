@@ -43,13 +43,13 @@ exports.onload = function(app){
     }) ;
 
     // 插入控制器
-	helper.log.trace("befor merge controller: ocframework/lib/mvc/controllers/layout/WebLayout.js & ocuser/lib/MiniUserPad.js as userpad") ;
-    helper.controller.append(
-        "ocframework/lib/mvc/controllers/layout/WebLayout.js"
-        , "ocuser/lib/MiniUserPad.js"
-        , "userpad"
-        , this.hold()
-    ) ;
+	helper.log.trace("befor merge controller: ocframework/layout/WebLayout.js & ocuser/MiniUserPad.js as userpad") ;
+	//   加载控制器 WebLayout 和 MiniUserPad
+	helper.controller("ocframework/layout/WebLayout.js",this.hold('err1','weblayout')) ;
+	helper.controller("ocuser/MiniUserPad.js",this.hold('err2','miniuserpad')) ;
+	this.step(function(){
+		this.recv.weblayout.appendChild('userpad',this.recv.miniuserpad) ;
+	}) ;
 
     //插入 view
     helper.template("ocframework/templates/WebLayout.html",this.hold(function(err,tpl){
@@ -82,7 +82,7 @@ exports.onload = function(app){
 
 
     // 注册控制器的别名
-    Controller.registerAlias('signin','ocuser/lib/SignIn.js') ;
-    Controller.registerAlias('signup','ocuser/lib/SignUp.js') ;
-    Controller.registerAlias('signout','ocuser/lib/SignOut.js') ;
+    Controller.registerAlias('signin','ocuser/controllers/SignIn.js') ;
+    Controller.registerAlias('signup','ocuser/controllers/SignUp.js') ;
+    Controller.registerAlias('signout','ocuser/controllers/SignOut.js') ;
 }
