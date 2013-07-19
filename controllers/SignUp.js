@@ -8,61 +8,41 @@ module.exports = {
 	{
 		hi: function(){}
 
-		, save: function(seed,nut)
+		, save: function save(seed,nut)
 		{
-			this.former().fillForm(this.seed) ;
+			var former = this.former().fillForm(this.seed) ;
 
 			if(!seed.username || !seed.password)
 			{
-				nut.message("请输入用户名和密码。",[],"error") ;
-				return true ;
+				nut.error("请输入用户名和密码。") ;
+				return ;
 			}
 			if( seed.password!=seed['password_repeat'])
 			{
-				nut.message("两次密码输入不一致",[],"error") ;
-				return true ;
+				nut.error("两次密码输入不一致。") ;
+				return ;
 			}
 
-			// 检查重复
-			this.former().save(
+			// 教研用户提交的数据
+			if(!former.validate())
+				return ;
 
-				this.seed
-
-				// before save
-				, function(doc){
+			former.save({
+				"msg.insert.duplicate": "用户名已经存在，请换用其他的用户名。"
+				, "msg.insert.success": "注册成功"
+				, "msg.insert.error": "用户注册遇到了错误"
+				, before: function(doc){
 					delete doc['password_repeat'] ;
 					doc.nickname || (doc.nickname=doc.username) ;
 					doc.createTime = (new Date()).toISOString() ;
 					doc.password = util.encryptPassword(seed.password,doc) ;
-
-					console.log(doc) ;
 				}
-
-				// save done
-				, this.hold(function(err,doc){
-
-					if(err && err.code==11000)
-					{
-						nut.message("用户名已经存在，请换用其他的用户名。",[],"error") ;
-					}
-
-					else
-					{
-						if(doc)
-						{
-							nut.message("注册成功",[],"success") ;
-							nut.view.disable() ;
-						}
-						else
-						{
-							nut.message("用户注册遇到了错误",[],"error") ;
-						}
-
-						if(err)
-							throw err ;
-					}
+				, done: this.hold(function(err,doc){
+					if(!err)
+						nut.view.disable() ;
 				})
-			) ;
+			}) ;
+
 		}
 	}
 }
