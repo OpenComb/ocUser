@@ -6,13 +6,24 @@ module.exports = {
         this.former().load() ;
     }
 
-    , children: {
-        save: function(){
-            var former = this.former() ;
+    , actions: {
+        save: function(seed){
+            var former = this.former().fillForm(seed) ;
+
             if(!former.validate())
                 return ;
 
-            former.save(this.hold()) ;
+            former.save(
+                function(doc){
+                    doc.password = helper.util.md5(doc.password) ;
+                    console.log(doc.password) ;
+                }
+                ,this.hold()
+            ) ;
+        }
+
+        , remove : function(seed){
+            this.former().removethis.hold() ;
         }
     }
 }

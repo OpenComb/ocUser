@@ -1,4 +1,4 @@
-  <form class="form-horizontal" collection="ocuser/users" action="ocuser/UserForm?_id={@$model._id}">
+<form class="form-horizontal stay" collection="ocuser/users" action="/ocuser/UserForm:save?_id={@$model._id}">
     <fieldset>
       <div id="legend" class="">
         <legend class="">用户</legend>
@@ -8,7 +8,7 @@
           <!-- Text input-->
           <label class="control-label" for="input01">用户名</label>
           <div class="controls">
-            <input type="text" placeholder="" class="input-xlarge">
+            <input type="text" placeholder="" class="input-xlarge" name="username">
             <p class="help-block"></p>
           </div>
         </div><div class="control-group">
@@ -16,7 +16,7 @@
           <!-- Text input-->
           <label class="control-label" for="input01">昵称</label>
           <div class="controls">
-            <input type="text" placeholder="" class="input-xlarge">
+            <input type="text" placeholder="" class="input-xlarge" name="nickname">
             <p class="help-block"></p>
           </div>
         </div><div class="control-group">
@@ -24,7 +24,7 @@
           <!-- Text input-->
           <label class="control-label" for="input01">密码</label>
           <div class="controls">
-            <input type="text" placeholder="" class="input-xlarge">
+            <input type="text" placeholder="" class="input-xlarge" name="password">
             <p class="help-block"></p>
           </div>
         </div>
