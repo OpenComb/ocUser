@@ -11,14 +11,6 @@ module.exports = {
 			, view: "ocuser/templates/UserListPage.html"
 			, process: function(seed,nut)
 			{
-				var id = this.req.session.idmgr.current() ;
-				if(!id || id.username!='root')
-				{
-					this.nut.message("尚未登录") ;
-					this.location("/signin?forward=/ocuser/UserList",1) ;
-					return ;
-				}
-
 				helper.former(this,module.exports.view,function(err,former){
 
 					var condition = former.doc() ;
@@ -40,6 +32,7 @@ module.exports = {
 			
 			, viewIn: function()
 			{
+				// 用户信息
 				$(".show-user-id").popover({placement:"top"}) ;
 
 				$(".show-user-detail").each(function(){
@@ -49,7 +42,27 @@ module.exports = {
 						, title: "用户信息"
 						, content: $(".user-detail[_id="+$(this).attr("_id")+"]").html()
 					}) ;
-				})
+				}) ;
+
+				// 删除用户
+				console.log("xxxxxxxxxxxxx") ;
+				var deletingLink ;
+				$(".delete-user").click(function(){
+					deletingLink = this ;
+					$(".deleteConfirm").modal() ;
+					return false ;
+				}) ;
+				$(".btnConfirmDelete").click(function(){
+					$(deletingLink).action(function(err,nut){
+						console.log(arguments) ;
+						if(err) throw err ;
+
+						nut.msgqueue.popup() ;
+
+						// 删除消息
+						$(deletingLink).parents("tr.tr-user").remove() ;
+					}) ;
+				});
 			}
 		}
 	}
@@ -78,7 +91,14 @@ module.exports = {
 						) ;
 			}
 		}
+
+		, test: function(seed,nut){
+			nut.message("hieeeee") ;
+			nut.model.foo = "bar" ;
+			nut.model._id = seed._id ;
+		}
 	}
+
 	
 }
 

@@ -14,7 +14,7 @@
 
     <tbody>
     <foreach for="@page.docs" var="doc">
-        <tr>
+        <tr class="tr-user">
             <td>
             	<a class="show-user-id" title="用户ID" data-content="@doc._id.toString()" href="javascript:void();">...</a>
             </td>
@@ -29,6 +29,7 @@
             </td>
             <td class="useroptd">
                 <a class="show-user-detail" href="javascript:void(0)" _id="@doc._id.toString()">详细</a>
+	            <a class="delete-user" href="/ocuser/UserForm:remove?_id={@doc._id.toString()}">删除</a>
                 
                 <div class="user-detail" style="display:none" _id="@doc._id.toString()">
 					<p>ID：{@doc._id.toString()}</p>
@@ -36,8 +37,7 @@
 					<p>昵称：{@doc.nickname}</p>
 					<p>注册日期：{@doc.createTime}</p>
 					<p>
-						<a class="stay" href="/ocuser/UserList:view?_id={@doc._id.toString()}">新窗口</a>
-                                                <a class="stay" href="/ocuser/UserList">删除</a>
+						<a class="stay" href="/ocuser/UserList:test?_id={@doc._id.toString()}">新窗口</a>
 					</p>
                 </div>
             </td>
@@ -48,3 +48,19 @@
 </table>
 
 <include file="ocframework/templates/paginator.html" model="@page" model.url="/ocuser/lib/UserList:page?page=%pagenum%" />
+
+
+
+<div class="deleteConfirm modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">正在删除用户……</h3>
+	</div>
+	<div class="modal-body">
+		<p>确定要删除用户吗？</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+		<button class="btn btn-danger btnConfirmDelete" data-dismiss="modal">删除</button>
+	</div>
+</div>
