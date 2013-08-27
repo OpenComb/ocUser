@@ -29,10 +29,10 @@ exports.onload = function(app){
 
     // 数据表 建立索引,
     function callback(err){ err && console.log(err) ; }
-    helper.db.client.ensureIndex('ocuser/users',{username:-1},  {background: true,unique:true}, callback) ;
-    helper.db.client.ensureIndex('ocuser/users',{nickname:-1},  {background: true}, callback) ;
-    helper.db.client.ensureIndex('ocuser/users',{groups:-1},  {background: true}, callback) ;
-    helper.db.client.ensureIndex('ocuser/groups',{path:-1}, {background: true}, callback) ;
+    helper.db.ensureIndex('ocuser/users',{username:-1},  {background: true,unique:true}, callback) ;
+    helper.db.ensureIndex('ocuser/users',{nickname:-1},  {background: true}, callback) ;
+    helper.db.ensureIndex('ocuser/users',{groups:-1},  {background: true}, callback) ;
+    helper.db.ensureIndex('ocuser/groups',{path:-1}, {background: true}, callback) ;
 
     // 在 session 之后增加 id manager middleware
     app.on('use-connect-middleware.after',function(name,connect){
