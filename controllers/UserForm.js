@@ -22,8 +22,10 @@ module.exports = {
             ) ;
         }
 
-        , remove : function(seed){
-            this.former().removethis.hold() ;
+        , remove : function(seed,nut){
+			nut.view.disable() ;
+            this.former().remove(this.hold()) ;
         }
+
     }
 }
