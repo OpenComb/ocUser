@@ -36,7 +36,7 @@ exports.onload = function(app){
 
     // 在 session 之后增加 id manager middleware
     app.on('use-connect-middleware.after',function(name,connect){
-        if(name=='session')
+        if(name=='connect.session')
         {
             connect.use(IdManager.middleware) ;
         }
