@@ -1,6 +1,6 @@
 var IdManager = require("./lib/IdManager.js") ;
 var util = require("./lib/util.js") ;
-var Controller = require("ocframework/lib/mvc/Controller.js") ;
+var Controller = require("opencomb/lib/mvc/Controller.js") ;
 
 exports.rootDefaultPassword = '111111' ;
 
@@ -43,16 +43,16 @@ exports.onload = function(app){
     }) ;
 
     // 插入控制器
-	helper.log.trace("befor merge controller: ocframework/layout/WebLayout.js & ocuser/MiniUserPad.js as userpad") ;
+	helper.log.trace("befor merge controller: opencomb/layout/WebLayout.js & ocuser/MiniUserPad.js as userpad") ;
 	//   加载控制器 WebLayout 和 MiniUserPad
-	helper.controller("ocframework/layout/WebLayout.js",this.hold('err1','weblayout')) ;
+	helper.controller("opencomb/layout/WebLayout.js",this.hold('err1','weblayout')) ;
 	helper.controller("ocuser/MiniUserPad.js",this.hold('err2','miniuserpad')) ;
 	this.step(function(){
 		this.recv.weblayout.appendChild('userpad',this.recv.miniuserpad) ;
 	}) ;
 
     //插入 view
-    helper.template("ocframework/templates/WebLayout.html",this.hold(function(err,tpl){
+    helper.template("opencomb/templates/WebLayout.html",this.hold(function(err,tpl){
 
         if(err) throw err ;
 
@@ -64,7 +64,7 @@ exports.onload = function(app){
     })) ;
 
 	// control panel menu items
-	helper.template("ocframework/templates/ControlPanel.html",this.hold(function(err,tpl){
+	helper.template("opencomb/templates/ControlPanel.html",this.hold(function(err,tpl){
 
 		if(err) throw err ;
 
