@@ -1,15 +1,17 @@
 {
-  "name": "ocuser",
-  "version": "0.1.2",
-  "description": "OpenComb 的用户扩展",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-	"dependencies": {
-		"ocframework":"0.9.2"
-	},
-  "repository": "",
-  "author": "aleechou",
-  "license": "BSD"
+    "name": "ocuser",
+    "version": "0.1.3",
+    "description": "OpenComb 的用户扩展",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {},
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/OpenComb/ocUser#0.1.3"
+    },
+    "keywords": ["ocext"]
+    "author": "aleechou",
+    "license": "MIT"
 }
