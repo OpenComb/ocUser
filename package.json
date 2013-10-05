@@ -11,7 +11,7 @@
 	"type": "git",
 	"url": "https://github.com/OpenComb/ocUser#0.1.3"
     },
-    "keywords": ["ocext"]
+    "keywords": ["ocext"] ,
     "author": "aleechou",
     "license": "MIT"
 }
