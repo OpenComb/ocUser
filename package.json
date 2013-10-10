@@ -1,15 +1,17 @@
 {
     "name": "ocuser",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "OpenComb 的用户扩展",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "dependencies": {},
+    "dependencies": {
+        "opencomb": "*"
+    },
     "repository": {
 	"type": "git",
-	"url": "git://github.com/OpenComb/ocUser#0.1.3"
+	"url": "git://github.com/OpenComb/ocUser#0.1.4"
     },
     "keywords": ["ocext"] ,
     "author": "aleechou",
